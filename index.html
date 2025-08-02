@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Time Zone Converter - Global Time Calculator</title>
+    <meta name="description" content="A fast, accurate, and easy-to-use time zone converter to check and convert time across 195 countries. Perfect for remote teams, travelers, and global meetings.">
+    <meta name="keywords" content="time zone converter, global time, world clock, time difference calculator, convert time, Pakistan time, USA time, live clock">
+    
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+        }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+        }
+        .light .glass-card { 
+            background: rgba(255, 255, 255, 0.6); 
+            border: 1px solid rgba(0, 0, 0, 0.05); 
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1); 
+        }
+        .ad-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light .ad-container {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .modal-glass, .menu-glass { 
+            background: rgba(30, 30, 45, 0.6); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        .light .modal-glass, .light .menu-glass { 
+            background: rgba(255, 255, 255, 0.8); 
+            border: 1px solid rgba(0, 0, 0, 0.1); 
+        }
+        .timezone-item:hover, .menu-item:hover { 
+            background-color: rgba(255, 255, 255, 0.1); 
+        }
+        .light .timezone-item:hover, .light .menu-item:hover { 
+            background-color: rgba(0, 0, 0, 0.05); 
+        }
+        .scrollable-list::-webkit-scrollbar { 
+            width: 6px; 
+        }
+        .scrollable-list::-webkit-scrollbar-track { 
+            background: transparent; 
+        }
+        .scrollable-list::-webkit-scrollbar-thumb { 
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 10px; 
+        }
+        .light .scrollable-list::-webkit-scrollbar-thumb { 
+            background: rgba(0, 0, 0, 0.2); 
+        }
+        .format-switch { 
+            background-color: rgba(0,0,0,0.2); 
+        }
+        .light .format-switch { 
+            background-color: rgba(0,0,0,0.1); 
+        }
+        .format-switch .handle { 
+            transform: translateX(0px); 
+        }
+        .format-switch.active .handle { 
+            transform: translateX(24px); 
+        }
+        .nav-btn.active { 
+            background-color: #a855f7; 
+            color: white; 
+        }
+        .light .nav-btn.active { 
+            background-color: #9333ea; 
+            color: white; 
+        }
+        .nav-btn:not(.active) { 
+            color: #9ca3af; 
+        }
+        .light .nav-btn:not(.active) { 
+            color: #6b7280; 
+        }
+        .ad-placeholder {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(156, 163, 175, 0.7);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .page-content h2 { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            margin-top: 2rem;
+        }
+        .page-content h2:first-child {
+            margin-top: 0;
+        }
+        .page-content p { 
+            margin-bottom: 1rem; 
+            line-height: 1.6; 
+        }
+        .page-content ul { 
+            list-style-type: disc; 
+            padding-left: 1.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .page-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-[#080818] text-gray-800 dark:text-gray-200 transition-colors duration-500">
+
+    <div class="min-h-screen w-full bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-[#1a113c] dark:via-[#111827] dark:to-[#3c1e3b] flex flex-col items-center p-4 selection:bg-purple-500 selection:text-white">
+
+        <!-- Header -->
+        <header class="w-full max-w-md flex justify-between items-center mb-2 px-2 pt-4">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600 dark:text-purple-400"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <h1 class="text-xl font-bold tracking-wider text-gray-900 dark:text-white">Time Zone Converter</h1>
+            </div>
+            <div class="relative">
+                <button id="menu-button" class="p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors active:scale-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </button>
+                <div id="dropdown-menu" class="menu-glass absolute top-full right-0 mt-2 w-48 rounded-xl shadow-lg z-50 hidden transition-all duration-300 origin-top-right">
+                    <div class="p-2">
+                        <div id="theme-toggle" class="menu-item flex items-center justify-between w-full px-3 py-2 text-sm rounded-lg cursor-pointer">
+                            <span>Theme</span>
+                            <div class="flex items-center gap-2">
+                                <svg id="theme-icon-sun" class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                                <svg id="theme-icon-moon" class="w-5 h-5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="my-1 border-t border-white/10"></div>
+                        <a href="#" class="page-link menu-item block px-3 py-2 text-sm rounded-lg" data-page="about">About Us</a>
+                        <a href="#" class="page-link menu-item block px-3 py-2 text-sm rounded-lg" data-page="contact">Contact Us</a>
+                        <a href="#" class="page-link menu-item block px-3 py-2 text-sm rounded-lg" data-page="privacy">Privacy Policy</a>
+                        <a href="#" class="page-link menu-item block px-3 py-2 text-sm rounded-lg" data-page="terms">Terms of Use</a>
+                        <a href="#" class="page-link menu-item block px-3 py-2 text-sm rounded-lg" data-page="faq">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="w-full max-w-md flex-grow flex flex-col items-center gap-6 overflow-hidden">
+            <!-- Main Converter View -->
+            <div id="converter-view" class="w-full flex flex-col items-center gap-6">
+                <p class="text-center text-sm text-gray-500 dark:text-gray-400 px-4">
+                    Instantly convert time between different countries and calculate the time difference with our live world clock.
+                </p>
+                
+                <!-- FROM Zone Card -->
+                <div class="glass-card w-full rounded-3xl p-6 flex flex-col gap-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-purple-400 dark:text-purple-300">FROM</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-semibold text-gray-600 dark:text-gray-400">24h</span>
+                            <div id="format-toggle" class="format-switch w-12 h-7 rounded-full flex items-center p-1 cursor-pointer transition-colors">
+                                <div class="handle w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out"></div>
+                            </div>
+                            <span class="text-xs font-semibold text-gray-600 dark:text-gray-400">12h</span>
+                        </div>
+                    </div>
+                    <div id="zone1-selector" data-zone="UTC" class="flex items-center justify-between w-full p-3 bg-black/10 dark:bg-black/20 border border-white/10 rounded-xl text-gray-800 dark:text-white focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <img id="zone1-flag" src="https://flagcdn.com/w40/un.png" alt="flag" class="w-6 h-4 object-cover rounded-sm">
+                            <span id="zone1-name">UTC</span>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-baseline">
+                            <p id="zone1-time" class="text-5xl font-extrabold tracking-tighter text-gray-900 dark:text-white">--:--:--</p>
+                            <span id="zone1-ampm" class="text-2xl font-bold ml-2 text-gray-500 dark:text-gray-400"></span>
+                        </div>
+                        <p id="zone1-date" class="text-gray-500 dark:text-gray-400">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- Banner Ad Placement -->
+                <div class="ad-container rounded-2xl p-4 my-2 w-full">
+                    <div class="ad-placeholder text-center">
+                        <!-- ADSENSE BANNER AD PLACEHOLDER -->
+                        <!-- Replace this div with your AdSense ad code -->
+                        <div style="color: rgba(156, 163, 175, 0.5); font-size: 0.875rem;">
+                            📱 Ad Space - Banner (728x90 or 320x50)
+                        </div>
+                        <!-- 
+                        Example AdSense code to replace above:
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                             data-ad-slot="XXXXXXXXXX"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        -->
+                    </div>
+                </div>
+                
+                <!-- Swap Button -->
+                <button id="swap-button" class="p-4 rounded-full bg-purple-200 dark:bg-purple-900/70 hover:bg-purple-300 dark:hover:bg-purple-900 transition-all duration-300 transform hover:-rotate-180 active:scale-90 z-10 -my-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-purple-700 dark:text-purple-300"><path d="M8 3L4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 l4-4-4-4"/><path d="M20 17H4"/></svg>
+                </button>
+
+                <!-- TO Zone Card -->
+                <div class="glass-card w-full rounded-3xl p-6 flex flex-col gap-4">
+                    <span class="text-sm font-medium text-green-500 dark:text-green-400">TO</span>
+                    <div id="zone2-selector" data-zone="Asia/Karachi" class="flex items-center justify-between w-full p-3 bg-black/10 dark:bg-black/20 border border-white/10 rounded-xl text-gray-800 dark:text-white focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <img id="zone2-flag" src="https://flagcdn.com/w40/pk.png" alt="flag" class="w-6 h-4 object-cover rounded-sm">
+                            <span id="zone2-name">Pakistan</span>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-baseline">
+                            <p id="zone2-time" class="text-5xl font-extrabold tracking-tighter text-gray-900 dark:text-white">--:--:--</p>
+                            <span id="zone2-ampm" class="text-2xl font-bold ml-2 text-gray-500 dark:text-gray-400"></span>
+                        </div>
+                        <p id="zone2-date" class="text-gray-500 dark:text-gray-400">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- World Clock View -->
+            <div id="world-clock-view" class="w-full h-full flex flex-col gap-4 hidden">
+                 <input id="world-clock-search" type="text" placeholder="Search for a country or city..." class="w-full p-3 bg-black/10 dark:bg-black/20 border border-white/10 rounded-lg text-gray-800 dark:text-white focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                <div id="world-clock-list" class="flex-grow space-y-3 overflow-y-auto scrollable-list pr-2">
+                    <!-- World clocks will be inserted here by JS -->
+                </div>
+            </div>
+
+            <!-- Page View for About, Contact etc. -->
+            <div id="page-view" class="w-full max-w-2xl text-gray-800 dark:text-gray-200 glass-card rounded-2xl p-8 overflow-y-auto hidden">
+                <button id="back-button" class="mb-6 flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400 font-semibold cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    Back
+                </button>
+                <div id="page-content-area"></div>
+            </div>
+        </main>
+        
+        <!-- Footer Navigation -->
+        <footer class="w-full max-w-md mt-auto sticky bottom-4">
+            <nav class="glass-card rounded-full flex justify-around items-center p-1.5">
+                <button id="nav-converter" class="nav-btn active flex-1 flex items-center justify-center gap-2 transition-all duration-300 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 l4-4-4-4"/><path d="M20 17H4"/></svg>
+                    <span class="text-sm font-semibold">Converter</span>
+                </button>
+                <button id="nav-world-clock" class="nav-btn flex-1 flex items-center justify-center gap-2 transition-all duration-300 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span class="text-sm font-semibold">World Clock</span>
+                </button>
+            </nav>
+        </footer>
+    </div>
+
+    <!-- Timezone Selection Modal -->
+    <div id="timezone-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 hidden transition-opacity duration-300">
+        <div class="modal-glass w-full max-w-md h-[70vh] rounded-2xl flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-white/10">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Select Time Zone</h3>
+                <button id="modal-close" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="m18 6-12 12"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-4">
+                <input id="timezone-search" type="text" placeholder="Search countries, cities, or time zones..." class="w-full p-3 bg-black/10 dark:bg-black/20 border border-white/10 rounded-lg text-gray-800 dark:text-white focus:ring-2 focus:ring-purple-500 focus:outline-none">
+            </div>
+            <div id="timezone-list" class="flex-grow overflow-y-auto scrollable-list px-4 pb-4">
+                <!-- Timezone options will be inserted here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Time zones data - Comprehensive list of world time zones (195+)
+        const timeZones = {
+            'UTC': { name: 'UTC', country: 'UTC', flag: 'un' },
+            // Americas
+            'America/New_York': { name: 'New York', country: 'United States', flag: 'us' },
+            'America/Los_Angeles': { name: 'Los Angeles', country: 'United States', flag: 'us' },
+            'America/Chicago': { name: 'Chicago', country: 'United States', flag: 'us' },
+            'America/Denver': { name: 'Denver', country: 'United States', flag: 'us' },
+            'America/Phoenix': { name: 'Phoenix', country: 'United States', flag: 'us' },
+            'America/Anchorage': { name: 'Anchorage', country: 'United States', flag: 'us' },
+            'Pacific/Honolulu': { name: 'Honolulu', country: 'United States', flag: 'us' },
+            'America/Toronto': { name: 'Toronto', country: 'Canada', flag: 'ca' },
+            'America/Vancouver': { name: 'Vancouver', country: 'Canada', flag: 'ca' },
+            'America/Montreal': { name: 'Montreal', country: 'Canada', flag: 'ca' },
+            'America/Halifax': { name: 'Halifax', country: 'Canada', flag: 'ca' },
+            'America/Mexico_City': { name: 'Mexico City', country: 'Mexico', flag: 'mx' },
+            'America/Cancun': { name: 'Cancun', country: 'Mexico', flag: 'mx' },
+            'America/Guatemala': { name: 'Guatemala City', country: 'Guatemala', flag: 'gt' },
+            'America/Belize': { name: 'Belize City', country: 'Belize', flag: 'bz' },
+            'America/Costa_Rica': { name: 'San José', country: 'Costa Rica', flag: 'cr' },
+            'America/Panama': { name: 'Panama City', country: 'Panama', flag: 'pa' },
+            'America/Havana': { name: 'Havana', country: 'Cuba', flag: 'cu' },
+            'America/Jamaica': { name: 'Kingston', country: 'Jamaica', flag: 'jm' },
+            'America/Santo_Domingo': { name: 'Santo Domingo', country: 'Dominican Republic', flag: 'do' },
+            'America/Puerto_Rico': { name: 'San Juan', country: 'Puerto Rico', flag: 'pr' },
+            'America/Caracas': { name: 'Caracas', country: 'Venezuela', flag: 've' },
+            'America/Bogota': { name: 'Bogotá', country: 'Colombia', flag: 'co' },
+            'America/Lima': { name: 'Lima', country: 'Peru', flag: 'pe' },
+            'America/La_Paz': { name: 'La Paz', country: 'Bolivia', flag: 'bo' },
+            'America/Santiago': { name: 'Santiago', country: 'Chile', flag: 'cl' },
+            'America/Buenos_Aires': { name: 'Buenos Aires', country: 'Argentina', flag: 'ar' },
+            'America/Montevideo': { name: 'Montevideo', country: 'Uruguay', flag: 'uy' },
+            'America/Asuncion': { name: 'Asunción', country: 'Paraguay', flag: 'py' },
+            'America/Sao_Paulo': { name: 'São Paulo', country: 'Brazil', flag: 'br' },
+            'America/Rio_Branco': { name: 'Rio Branco', country: 'Brazil', flag: 'br' },
+            'America/Manaus': { name: 'Manaus', country: 'Brazil', flag: 'br' },
+            'America/Fortaleza': { name: 'Fortaleza', country: 'Brazil', flag: 'br' },
+            
+            // Europe
+            'Europe/London': { name: 'London', country: 'United Kingdom', flag: 'gb' },
+            'Europe/Dublin': { name: 'Dublin', country: 'Ireland', flag: 'ie' },
+            'Europe/Paris': { name: 'Paris', country: 'France', flag: 'fr' },
+            'Europe/Berlin': { name: 'Berlin', country: 'Germany', flag: 'de' },
+            'Europe/Rome': { name: 'Rome', country: 'Italy', flag: 'it' },
+            'Europe/Madrid': { name: 'Madrid', country: 'Spain', flag: 'es' },
+            'Europe/Lisbon': { name: 'Lisbon', country: 'Portugal', flag: 'pt' },
+            'Europe/Amsterdam': { name: 'Amsterdam', country: 'Netherlands', flag: 'nl' },
+            'Europe/Brussels': { name: 'Brussels', country: 'Belgium', flag: 'be' },
+            'Europe/Zurich': { name: 'Zurich', country: 'Switzerland', flag: 'ch' },
+            'Europe/Vienna': { name: 'Vienna', country: 'Austria', flag: 'at' },
+            'Europe/Prague': { name: 'Prague', country: 'Czech Republic', flag: 'cz' },
+            'Europe/Budapest': { name: 'Budapest', country: 'Hungary', flag: 'hu' },
+            'Europe/Warsaw': { name: 'Warsaw', country: 'Poland', flag: 'pl' },
+            'Europe/Stockholm': { name: 'Stockholm', country: 'Sweden', flag: 'se' },
+            'Europe/Oslo': { name: 'Oslo', country: 'Norway', flag: 'no' },
+            'Europe/Copenhagen': { name: 'Copenhagen', country: 'Denmark', flag: 'dk' },
+            'Europe/Helsinki': { name: 'Helsinki', country: 'Finland', flag: 'fi' },
+            'Europe/Moscow': { name: 'Moscow', country: 'Russia', flag: 'ru' },
+            'Europe/Kiev': { name: 'Kyiv', country: 'Ukraine', flag: 'ua' },
+            'Europe/Bucharest': { name: 'Bucharest', country: 'Romania', flag: 'ro' },
+            'Europe/Athens': { name: 'Athens', country: 'Greece', flag: 'gr' },
+            'Europe/Sofia': { name: 'Sofia', country: 'Bulgaria', flag: 'bg' },
+            'Europe/Belgrade': { name: 'Belgrade', country: 'Serbia', flag: 'rs' },
+            'Europe/Zagreb': { name: 'Zagreb', country: 'Croatia', flag: 'hr' },
+            'Europe/Ljubljana': { name: 'Ljubljana', country: 'Slovenia', flag: 'si' },
+            'Europe/Bratislava': { name: 'Bratislava', country: 'Slovakia', flag: 'sk' },
+            'Europe/Tallinn': { name: 'Tallinn', country: 'Estonia', flag: 'ee' },
+            'Europe/Riga': { name: 'Riga', country: 'Latvia', flag: 'lv' },
+            'Europe/Vilnius': { name: 'Vilnius', country: 'Lithuania', flag: 'lt' },
+            'Europe/Minsk': { name: 'Minsk', country: 'Belarus', flag: 'by' },
+            
+            // Asia
+            'Asia/Tokyo': { name: 'Tokyo', country: 'Japan', flag: 'jp' },
+            'Asia/Seoul': { name: 'Seoul', country: 'South Korea', flag: 'kr' },
+            'Asia/Shanghai': { name: 'Shanghai', country: 'China', flag: 'cn' },
+            'Asia/Beijing': { name: 'Beijing', country: 'China', flag: 'cn' },
+            'Asia/Hong_Kong': { name: 'Hong Kong', country: 'Hong Kong', flag: 'hk' },
+            'Asia/Taipei': { name: 'Taipei', country: 'Taiwan', flag: 'tw' },
+            'Asia/Manila': { name: 'Manila', country: 'Philippines', flag: 'ph' },
+            'Asia/Singapore': { name: 'Singapore', country: 'Singapore', flag: 'sg' },
+            'Asia/Kuala_Lumpur': { name: 'Kuala Lumpur', country: 'Malaysia', flag: 'my' },
+            'Asia/Bangkok': { name: 'Bangkok', country: 'Thailand', flag: 'th' },
+            'Asia/Jakarta': { name: 'Jakarta', country: 'Indonesia', flag: 'id' },
+            'Asia/Ho_Chi_Minh': { name: 'Ho Chi Minh City', country: 'Vietnam', flag: 'vn' },
+            'Asia/Yangon': { name: 'Yangon', country: 'Myanmar', flag: 'mm' },
+            'Asia/Dhaka': { name: 'Dhaka', country: 'Bangladesh', flag: 'bd' },
+            'Asia/Kolkata': { name: 'Mumbai', country: 'India', flag: 'in' },
+            'Asia/Colombo': { name: 'Colombo', country: 'Sri Lanka', flag: 'lk' },
+            'Asia/Kathmandu': { name: 'Kathmandu', country: 'Nepal', flag: 'np' },
+            'Asia/Karachi': { name: 'Karachi', country: 'Pakistan', flag: 'pk' },
+            'Asia/Kabul': { name: 'Kabul', country: 'Afghanistan', flag: 'af' },
+            'Asia/Tashkent': { name: 'Tashkent', country: 'Uzbekistan', flag: 'uz' },
+            'Asia/Almaty': { name: 'Almaty', country: 'Kazakhstan', flag: 'kz' },
+            'Asia/Bishkek': { name: 'Bishkek', country: 'Kyrgyzstan', flag: 'kg' },
+            'Asia/Dushanbe': { name: 'Dushanbe', country: 'Tajikistan', flag: 'tj' },
+            'Asia/Ashgabat': { name: 'Ashgabat', country: 'Turkmenistan', flag: 'tm' },
+            'Asia/Tehran': { name: 'Tehran', country: 'Iran', flag: 'ir' },
+            'Asia/Dubai': { name: 'Dubai', country: 'UAE', flag: 'ae' },
+            'Asia/Muscat': { name: 'Muscat', country: 'Oman', flag: 'om' },
+            'Asia/Kuwait': { name: 'Kuwait City', country: 'Kuwait', flag: 'kw' },
+            'Asia/Riyadh': { name: 'Riyadh', country: 'Saudi Arabia', flag: 'sa' },
+            'Asia/Qatar': { name: 'Doha', country: 'Qatar', flag: 'qa' },
+            'Asia/Bahrain': { name: 'Manama', country: 'Bahrain', flag: 'bh' },
+            'Asia/Baghdad': { name: 'Baghdad', country: 'Iraq', flag: 'iq' },
+            'Asia/Damascus': { name: 'Damascus', country: 'Syria', flag: 'sy' },
+            'Asia/Beirut': { name: 'Beirut', country: 'Lebanon', flag: 'lb' },
+            'Asia/Amman': { name: 'Amman', country: 'Jordan', flag: 'jo' },
+            'Asia/Jerusalem': { name: 'Jerusalem', country: 'Israel', flag: 'il' },
+            'Asia/Nicosia': { name: 'Nicosia', country: 'Cyprus', flag: 'cy' },
+            'Asia/Tbilisi': { name: 'Tbilisi', country: 'Georgia', flag: 'ge' },
+            'Asia/Yerevan': { name: 'Yerevan', country: 'Armenia', flag: 'am' },
+            'Asia/Baku': { name: 'Baku', country: 'Azerbaijan', flag: 'az' },
+            
+            // Africa
+            'Africa/Cairo': { name: 'Cairo', country: 'Egypt', flag: 'eg' },
+            'Africa/Lagos': { name: 'Lagos', country: 'Nigeria', flag: 'ng' },
+            'Africa/Johannesburg': { name: 'Johannesburg', country: 'South Africa', flag: 'za' },
+            'Africa/Nairobi': { name: 'Nairobi', country: 'Kenya', flag: 'ke' },
+            'Africa/Casablanca': { name: 'Casablanca', country: 'Morocco', flag: 'ma' },
+            'Africa/Algiers': { name: 'Algiers', country: 'Algeria', flag: 'dz' },
+            'Africa/Tunis': { name: 'Tunis', country: 'Tunisia', flag: 'tn' },
+            'Africa/Tripoli': { name: 'Tripoli', country: 'Libya', flag: 'ly' },
+            'Africa/Khartoum': { name: 'Khartoum', country: 'Sudan', flag: 'sd' },
+            'Africa/Addis_Ababa': { name: 'Addis Ababa', country: 'Ethiopia', flag: 'et' },
+            'Africa/Kampala': { name: 'Kampala', country: 'Uganda', flag: 'ug' },
+            'Africa/Dar_es_Salaam': { name: 'Dar es Salaam', country: 'Tanzania', flag: 'tz' },
+            'Africa/Lusaka': { name: 'Lusaka', country: 'Zambia', flag: 'zm' },
+            'Africa/Harare': { name: 'Harare', country: 'Zimbabwe', flag: 'zw' },
+            'Africa/Maputo': { name: 'Maputo', country: 'Mozambique', flag: 'mz' },
+            'Africa/Gaborone': { name: 'Gaborone', country: 'Botswana', flag: 'bw' },
+            'Africa/Windhoek': { name: 'Windhoek', country: 'Namibia', flag: 'na' },
+            'Africa/Kinshasa': { name: 'Kinshasa', country: 'DR Congo', flag: 'cd' },
+            'Africa/Luanda': { name: 'Luanda', country: 'Angola', flag: 'ao' },
+            'Africa/Libreville': { name: 'Libreville', country: 'Gabon', flag: 'ga' },
+            'Africa/Douala': { name: 'Douala', country: 'Cameroon', flag: 'cm' },
+            'Africa/Bangui': { name: 'Bangui', country: 'Central African Republic', flag: 'cf' },
+            'Africa/Ndjamena': { name: "N'Djamena", country: 'Chad', flag: 'td' },
+            'Africa/Niamey': { name: 'Niamey', country: 'Niger', flag: 'ne' },
+            'Africa/Ouagadougou': { name: 'Ouagadougou', country: 'Burkina Faso', flag: 'bf' },
+            'Africa/Bamako': { name: 'Bamako', country: 'Mali', flag: 'ml' },
+            'Africa/Dakar': { name: 'Dakar', country: 'Senegal', flag: 'sn' },
+            'Africa/Conakry': { name: 'Conakry', country: 'Guinea', flag: 'gn' },
+            'Africa/Bissau': { name: 'Bissau', country: 'Guinea-Bissau', flag: 'gw' },
+            'Africa/Freetown': { name: 'Freetown', country: 'Sierra Leone', flag: 'sl' },
+            'Africa/Monrovia': { name: 'Monrovia', country: 'Liberia', flag: 'lr' },
+            'Africa/Abidjan': { name: 'Abidjan', country: 'Ivory Coast', flag: 'ci' },
+            'Africa/Accra': { name: 'Accra', country: 'Ghana', flag: 'gh' },
+            'Africa/Lome': { name: 'Lomé', country: 'Togo', flag: 'tg' },
+            'Africa/Porto-Novo': { name: 'Porto-Novo', country: 'Benin', flag: 'bj' },
+            
+            // Oceania
+            'Australia/Sydney': { name: 'Sydney', country: 'Australia', flag: 'au' },
+            'Australia/Melbourne': { name: 'Melbourne', country: 'Australia', flag: 'au' },
+            'Australia/Brisbane': { name: 'Brisbane', country: 'Australia', flag: 'au' },
+            'Australia/Perth': { name: 'Perth', country: 'Australia', flag: 'au' },
+            'Australia/Adelaide': { name: 'Adelaide', country: 'Australia', flag: 'au' },
+            'Australia/Darwin': { name: 'Darwin', country: 'Australia', flag: 'au' },
+            'Pacific/Auckland': { name: 'Auckland', country: 'New Zealand', flag: 'nz' },
+            'Pacific/Fiji': { name: 'Suva', country: 'Fiji', flag: 'fj' },
+            'Pacific/Port_Moresby': { name: 'Port Moresby', country: 'Papua New Guinea', flag: 'pg' },
+            'Pacific/Vanuatu': { name: 'Port Vila', country: 'Vanuatu', flag: 'vu' },
+            'Pacific/Noumea': { name: 'Nouméa', country: 'New Caledonia', flag: 'nc' },
+            'Pacific/Tahiti': { name: 'Tahiti', country: 'French Polynesia', flag: 'pf' },
+            'Pacific/Guam': { name: 'Guam', country: 'Guam', flag: 'gu' },
+            'Pacific/Saipan': { name: 'Saipan', country: 'Northern Mariana Islands', flag: 'mp' }
+        };
+
+        // Get all available time zones sorted by region
+        const getAllTimeZones = () => {
+            return Object.keys(timeZones).sort((a, b) => {
+                const aInfo = timeZones[a];
+                const bInfo = timeZones[b];
+                // Sort by country first, then by city
+                if (aInfo.country !== bInfo.country) {
+                    return aInfo.country.localeCompare(bInfo.country);
+                }
+                return aInfo.name.localeCompare(bInfo.name);
+            });
+        };
+
+        // State variables
+        let currentView = 'converter';
+        let is12HourFormat = false;
+        let currentZone1 = 'UTC';
+        let currentZone2 = 'Asia/Karachi';
+        let modalTarget = null;
+
+        // Page content data
+        const pageContent = {
+            about: {
+                title: 'About Us',
+                content: `
+                    <h2>About Time Zone Converter</h2>
+                    <p>Welcome to the most accurate and user-friendly time zone converter on the web. Our mission is to make global communication seamless by providing instant, reliable time zone conversions for professionals, travelers, and anyone working across time zones.</p>
+                    
+                    <h2>Our Features</h2>
+                    <ul>
+                        <li>Real-time conversion between 195+ countries and cities</li>
+                        <li>Live world clock with major global cities</li>
+                        <li>12-hour and 24-hour format support</li>
+                        <li>Dark and light theme options</li>
+                        <li>Mobile-responsive design</li>
+                        <li>Fast, accurate, and always up-to-date</li>
+                    </ul>
+                    
+                    <h2>Why Choose Us?</h2>
+                    <p>Built with modern web technologies and designed for speed and accuracy, our converter helps millions of users coordinate across time zones every month. Whether you're scheduling international meetings, planning travel, or staying connected with family and friends worldwide, we've got you covered.</p>
+                    
+                    <p>Our converter is completely free to use and requires no registration. We believe time zone conversion should be simple, fast, and accessible to everyone.</p>
+                `
+            },
+            contact: {
+                title: 'Contact Us',
+                content: `
+                    <h2>Get in Touch</h2>
+                    <p>We'd love to hear from you! Whether you have questions, suggestions, or need support, our team is here to help.</p>
+                    
+                    <h2>Contact Information</h2>
+                    <ul>
+                        <li><strong>Email:</strong> support@timezoneconverter.com</li>
+                        <li><strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM (UTC)</li>
+                        <li><strong>Response Time:</strong> Within 24 hours</li>
+                    </ul>
+                    
+                    <h2>Feedback & Suggestions</h2>
+                    <p>Your feedback helps us improve! If you have ideas for new features or improvements, please don't hesitate to reach out. We read every message and take all suggestions seriously.</p>
+                    
+                    <h2>Technical Support</h2>
+                    <p>Experiencing issues? Please include the following information in your message:</p>
+                    <ul>
+                        <li>Device type (mobile/desktop)</li>
+                        <li>Browser and version</li>
+                        <li>Description of the issue</li>
+                        <li>Steps to reproduce the problem</li>
+                    </ul>
+                    
+                    <p>We're committed to providing the best possible experience and will work quickly to resolve any issues you encounter.</p>
+                `
+            },
+            privacy: {
+                title: 'Privacy Policy',
+                content: `
+                    <h2>Privacy Policy</h2>
+                    <p><strong>Last updated:</strong> August 2, 2025</p>
+                    
+                    <h2>Information We Collect</h2>
+                    <p>We are committed to protecting your privacy. Our Time Zone Converter operates with minimal data collection:</p>
+                    <ul>
+                        <li><strong>Theme Preference:</strong> Stored locally in your browser to remember your dark/light mode preference</li>
+                        <li><strong>No Personal Data:</strong> We do not collect, store, or process any personal information</li>
+                        <li><strong>No Account Required:</strong> Our service works without registration or login</li>
+                    </ul>
+                    
+                    <h2>How We Use Information</h2>
+                    <p>The only data we store is your theme preference in your browser's local storage. This helps provide a better user experience by remembering your preferred appearance settings.</p>
+                    
+                    <h2>Third-Party Services</h2>
+                    <p>Our application may include:</p>
+                    <ul>
+                        <li><strong>Google AdSense:</strong> For displaying relevant advertisements (subject to Google's Privacy Policy)</li>
+                        <li><strong>Flag Images:</strong> Country flags loaded from FlagCDN service</li>
+                        <li><strong>Web Fonts:</strong> Google Fonts for typography</li>
+                    </ul>
+                    
+                    <h2>Data Security</h2>
+                    <p>Since we don't collect personal data, there's minimal risk to your privacy. All time zone calculations are performed locally in your browser.</p>
+                    
+                    <h2>Your Rights</h2>
+                    <p>You have full control over your data. You can clear your browser's local storage at any time to reset all preferences.</p>
+                    
+                    <h2>Contact Us</h2>
+                    <p>If you have questions about this Privacy Policy, please contact us at privacy@timezoneconverter.com</p>
+                `
+            },
+            terms: {
+                title: 'Terms of Use',
+                content: `
+                    <h2>Terms of Use</h2>
+                    <p><strong>Last updated:</strong> August 2, 2025</p>
+                    
+                    <h2>Acceptance of Terms</h2>
+                    <p>By accessing and using this Time Zone Converter, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    
+                    <h2>Use License</h2>
+                    <p>Permission is granted to temporarily use this web application for personal and commercial purposes. This license shall automatically terminate if you violate any of these restrictions.</p>
+                    
+                    <h2>Permitted Uses</h2>
+                    <ul>
+                        <li>Converting time zones for personal or business purposes</li>
+                        <li>Checking world clock times</li>
+                        <li>Embedding or linking to our converter (with attribution)</li>
+                        <li>Using converted times for scheduling and planning</li>
+                    </ul>
+                    
+                    <h2>Prohibited Uses</h2>
+                    <ul>
+                        <li>Attempting to reverse engineer or copy the application</li>
+                        <li>Using the service for illegal activities</li>
+                        <li>Overloading our servers with automated requests</li>
+                        <li>Removing or modifying any copyright notices</li>
+                    </ul>
+                    
+                    <h2>Accuracy Disclaimer</h2>
+                    <p>While we strive for accuracy, time zone information may occasionally be subject to changes by governments. We cannot guarantee 100% accuracy and recommend verifying critical scheduling information.</p>
+                    
+                    <h2>Limitation of Liability</h2>
+                    <p>In no event shall Time Zone Converter or its suppliers be liable for any damages arising out of the use or inability to use this service.</p>
+                    
+                    <h2>Service Availability</h2>
+                    <p>We reserve the right to modify or discontinue the service at any time without notice. We are not liable for any modification, suspension, or discontinuation of the service.</p>
+                    
+                    <h2>Governing Law</h2>
+                    <p>These terms and conditions are governed by and construed in accordance with applicable international laws.</p>
+                `
+            },
+            faq: {
+                title: 'Frequently Asked Questions',
+                content: `
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <h2>How accurate is the time zone converter?</h2>
+                    <p>Our converter uses the browser's built-in Intl.DateTimeFormat API, which is automatically updated with the latest time zone information. This ensures high accuracy for all supported time zones.</p>
+                    
+                    <h2>Does it account for Daylight Saving Time?</h2>
+                    <p>Yes! The converter automatically adjusts for Daylight Saving Time (DST) changes. When a region observes DST, the time is automatically adjusted without any manual intervention required.</p>
+                    
+                    <h2>How many countries and cities are supported?</h2>
+                    <p>We support over 195 countries and major cities worldwide, covering all standard time zones including UTC offsets and regional variations.</p>
+                    
+                    <h2>Can I use this offline?</h2>
+                    <p>The basic converter functionality works offline once the page is loaded. However, flag images and fonts require an internet connection.</p>
+                    
+                    <h2>Is the service free?</h2>
+                    <p>Yes, our time zone converter is completely free to use. We display advertisements to support the service, but all features are available at no cost.</p>
+                    
+                    <h2>Can I embed this on my website?</h2>
+                    <p>While direct embedding isn't currently supported, you're welcome to link to our converter. We're working on embeddable widgets for the future.</p>
+                    
+                    <h2>What browsers are supported?</h2>
+                    <p>Our converter works on all modern browsers including Chrome, Firefox, Safari, and Edge on both desktop and mobile devices.</p>
+                    
+                    <h2>How often is the time zone data updated?</h2>
+                    <p>Time zone data is maintained by your browser and is typically updated with browser updates. This ensures you always have the most current information.</p>
+                    
+                    <h2>Can I suggest new features?</h2>
+                    <p>Absolutely! We welcome feature suggestions. Please contact us through our Contact page with your ideas.</p>
+                    
+                    <h2>Why do some countries have multiple time zones?</h2>
+                    <p>Large countries like the United States, Russia, and Canada span multiple time zones. We include major cities from each time zone to provide comprehensive coverage.</p>
+                `
+            }
+        };
+
+        // Utility functions
+        function formatTime(date, use12Hour = false) {
+            if (use12Hour) {
+                const timeString = date.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                const [time, period] = timeString.split(' ');
+                return [time, period || ''];
+            } else {
+                const time = date.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+                return [time, ''];
+            }
+        }
+
+        function getTimeInZone(timezone) {
+            try {
+                const now = new Date();
+                return new Date(now.toLocaleString("en-US", { timeZone: timezone }));
+            } catch (error) {
+                console.error('Error getting time for timezone:', timezone, error);
+                return new Date();
+            }
+        }
+
+        function formatDate(date) {
+            return date.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Theme management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.className = savedTheme;
+            updateThemeIcons(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.className;
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.className = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcons(newTheme);
+        }
+
+        function updateThemeIcons(theme) {
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            
+            if (theme === 'light') {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // Time updates
+        function updateTimes() {
+            // Update converter times
+            const zone1Time = getTimeInZone(currentZone1);
+            const zone2Time = getTimeInZone(currentZone2);
+            
+            const [time1, ampm1] = formatTime(zone1Time, is12HourFormat);
+            const [time2, ampm2] = formatTime(zone2Time, is12HourFormat);
+            
+            document.getElementById('zone1-time').textContent = time1;
+            document.getElementById('zone1-ampm').textContent = ampm1;
+            document.getElementById('zone1-date').textContent = formatDate(zone1Time);
+            
+            document.getElementById('zone2-time').textContent = time2;
+            document.getElementById('zone2-ampm').textContent = ampm2;
+            document.getElementById('zone2-date').textContent = formatDate(zone2Time);
+
+            // Update world clock if visible
+            if (currentView === 'world-clock') {
+                updateWorldClock();
+            }
+        }
+
+        function updateWorldClock() {
+            const worldClockList = document.getElementById('world-clock-list');
+            const searchTerm = document.getElementById('world-clock-search').value.toLowerCase();
+            
+            // Get all time zones, filter if search term exists
+            let filteredCountries = getAllTimeZones();
+            if (searchTerm) {
+                filteredCountries = filteredCountries.filter(timezone => {
+                    const info = timeZones[timezone];
+                    return info && (
+                        info.name.toLowerCase().includes(searchTerm) ||
+                        info.country.toLowerCase().includes(searchTerm) ||
+                        timezone.toLowerCase().includes(searchTerm)
+                    );
+                });
+            }
+
+            worldClockList.innerHTML = '';
+            
+            // Show count of results
+            if (searchTerm && filteredCountries.length > 0) {
+                const countDiv = document.createElement('div');
+                countDiv.className = 'text-sm text-gray-500 dark:text-gray-400 mb-4 px-2';
+                countDiv.textContent = `Found ${filteredCountries.length} location${filteredCountries.length !== 1 ? 's' : ''}`;
+                worldClockList.appendChild(countDiv);
+            }
+            
+            filteredCountries.forEach((timezone, index) => {
+                const info = timeZones[timezone];
+                if (!info) return;
+
+                const timeInZone = getTimeInZone(timezone);
+                const [time, ampm] = formatTime(timeInZone, is12HourFormat);
+
+                const clockItem = document.createElement('div');
+                clockItem.className = 'glass-card rounded-2xl p-4 flex items-center justify-between transition-all hover:scale-[1.02]';
+                clockItem.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <img src="https://flagcdn.com/w40/${info.flag}.png" alt="${info.country} flag" class="w-8 h-6 object-cover rounded-sm">
+                        <div>
+                            <div class="font-semibold text-gray-900 dark:text-white">${info.name}</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">${info.country}</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-xl font-bold text-gray-900 dark:text-white">${time}</span>
+                            ${ampm ? `<span class="text-sm font-medium text-gray-500 dark:text-gray-400">${ampm}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+                worldClockList.appendChild(clockItem);
+
+                // Add in-feed ad after every 8th country (less frequent for better UX)
+                if ((index + 1) % 8 === 0 && index < filteredCountries.length - 1) {
+                    const adDiv = document.createElement('div');
+                    adDiv.className = 'ad-container rounded-2xl p-4 my-2';
+                    adDiv.innerHTML = `
+                        <div class="ad-placeholder text-center">
+                            <!-- ADSENSE IN-FEED AD PLACEHOLDER -->
+                            <div style="color: rgba(156, 163, 175, 0.5); font-size: 0.875rem;">
+                                📱 In-Feed Ad Space (300x250)
+                            </div>
+                        </div>
+                    `;
+                    worldClockList.appendChild(adDiv);
+                }
+            });
+            
+            // Show "no results" message if search returns nothing
+            if (searchTerm && filteredCountries.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'text-center text-gray-500 dark:text-gray-400 py-8';
+                noResults.innerHTML = `
+                    <div class="text-lg mb-2">No locations found</div>
+                    <div class="text-sm">Try searching for a country, city, or region</div>
+                `;
+                worldClockList.appendChild(noResults);
+            }
+        }
+
+        // Modal functions
+        function openTimezoneModal(target) {
+            modalTarget = target;
+            const modal = document.getElementById('timezone-modal');
+            const timezoneList = document.getElementById('timezone-list');
+            
+            // Populate timezone list
+            timezoneList.innerHTML = '';
+            Object.entries(timeZones).forEach(([key, info]) => {
+                const timezoneItem = document.createElement('div');
+                timezoneItem.className = 'timezone-item flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors';
+                timezoneItem.innerHTML = `
+                    <img src="https://flagcdn.com/w40/${info.flag}.png" alt="${info.country} flag" class="w-6 h-4 object-cover rounded-sm">
+                    <div class="flex-grow">
+                        <div class="font-medium text-gray-900 dark:text-white">${info.name}</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">${info.country}</div>
+                    </div>
+                `;
+                timezoneItem.addEventListener('click', () => selectTimezone(key));
+                timezoneList.appendChild(timezoneItem);
+            });
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeTimezoneModal() {
+            document.getElementById('timezone-modal').classList.add('hidden');
+            document.getElementById('timezone-search').value = '';
+            modalTarget = null;
+        }
+
+        function selectTimezone(timezone) {
+            const info = timeZones[timezone];
+            if (modalTarget === 'zone1') {
+                currentZone1 = timezone;
+                document.getElementById('zone1-name').textContent = info.name;
+                document.getElementById('zone1-flag').src = `https://flagcdn.com/w40/${info.flag}.png`;
+            } else if (modalTarget === 'zone2') {
+                currentZone2 = timezone;
+                document.getElementById('zone2-name').textContent = info.name;
+                document.getElementById('zone2-flag').src = `https://flagcdn.com/w40/${info.flag}.png`;
+            }
+            closeTimezoneModal();
+            updateTimes();
+        }
+
+        // Search functionality
+        function filterTimezones() {
+            const searchTerm = document.getElementById('timezone-search').value.toLowerCase();
+            const timezoneItems = document.querySelectorAll('#timezone-list .timezone-item');
+            
+            timezoneItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // View switching
+        function switchView(view) {
+            currentView = view;
+            
+            const converterView = document.getElementById('converter-view');
+            const worldClockView = document.getElementById('world-clock-view');
+            const pageView = document.getElementById('page-view');
+            const converterBtn = document.getElementById('nav-converter');
+            const worldClockBtn = document.getElementById('nav-world-clock');
+            
+            // Hide all views first
+            converterView.classList.add('hidden');
+            worldClockView.classList.add('hidden');
+            pageView.classList.add('hidden');
+            
+            if (view === 'converter') {
+                converterView.classList.remove('hidden');
+                converterBtn.classList.add('active');
+                worldClockBtn.classList.remove('active');
+            } else if (view === 'world-clock') {
+                worldClockView.classList.remove('hidden');
+                converterBtn.classList.remove('active');
+                worldClockBtn.classList.add('active');
+                updateWorldClock();
+            } else if (view === 'page') {
+                pageView.classList.remove('hidden');
+                converterBtn.classList.remove('active');
+                worldClockBtn.classList.remove('active');
+            }
+        }
+
+        // Page navigation
+        function showPage(pageId) {
+            const page = pageContent[pageId];
+            if (!page) return;
+            
+            const contentArea = document.getElementById('page-content-area');
+            contentArea.innerHTML = `<div class="page-content">${page.content}</div>`;
+            
+            switchView('page');
+            closeMenu();
+        }
+
+        function goBack() {
+            switchView('converter');
+        }
+
+        function closeMenu() {
+            document.getElementById('dropdown-menu').classList.add('hidden');
+        }
+
+        // Swap timezones
+        function swapTimezones() {
+            const temp = currentZone1;
+            currentZone1 = currentZone2;
+            currentZone2 = temp;
+            
+            const zone1Info = timeZones[currentZone1];
+            const zone2Info = timeZones[currentZone2];
+            
+            document.getElementById('zone1-name').textContent = zone1Info.name;
+            document.getElementById('zone1-flag').src = `https://flagcdn.com/w40/${zone1Info.flag}.png`;
+            document.getElementById('zone2-name').textContent = zone2Info.name;
+            document.getElementById('zone2-flag').src = `https://flagcdn.com/w40/${zone2Info.flag}.png`;
+            
+            updateTimes();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            updateTimes();
+            
+            // Time format toggle
+            document.getElementById('format-toggle').addEventListener('click', function() {
+                is12HourFormat = !is12HourFormat;
+                this.classList.toggle('active');
+                updateTimes();
+            });
+            
+            // Theme toggle
+            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+            
+            // Menu toggle
+            document.getElementById('menu-button').addEventListener('click', function() {
+                const menu = document.getElementById('dropdown-menu');
+                menu.classList.toggle('hidden');
+            });
+            
+            // Zone selectors
+            document.getElementById('zone1-selector').addEventListener('click', () => openTimezoneModal('zone1'));
+            document.getElementById('zone2-selector').addEventListener('click', () => openTimezoneModal('zone2'));
+            
+            // Swap button
+            document.getElementById('swap-button').addEventListener('click', swapTimezones);
+            
+            // Navigation buttons
+            document.getElementById('nav-converter').addEventListener('click', () => switchView('converter'));
+            document.getElementById('nav-world-clock').addEventListener('click', () => switchView('world-clock'));
+            
+            // Modal close
+            document.getElementById('modal-close').addEventListener('click', closeTimezoneModal);
+            document.getElementById('timezone-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeTimezoneModal();
+            });
+            
+            // Search functionality
+            document.getElementById('timezone-search').addEventListener('input', filterTimezones);
+            document.getElementById('world-clock-search').addEventListener('input', updateWorldClock);
+            
+            // Page navigation
+            document.querySelectorAll('.page-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Back button
+            document.getElementById('back-button').addEventListener('click', goBack);
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('dropdown-menu');
+                const menuButton = document.getElementById('menu-button');
+                if (!menu.contains(e.target) && !menuButton.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+            
+            // Update times every second
+            setInterval(updateTimes, 1000);
+        });
+
+        // Initialize AdSense (if using real ads, uncomment below)
+        // (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
